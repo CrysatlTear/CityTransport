@@ -1,4 +1,4 @@
-package com.java.automation.lab.fall.filimonov.core22.hierarchy.service.TransportService;
+package com.java.automation.lab.fall.filimonov.core22.hierarchy.service.transportservice;
 
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.transportdao.UndergroundDao;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.transportdao.impl.mock.UndergroundDaoImpl;

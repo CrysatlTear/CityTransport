@@ -1,4 +1,4 @@
-package com.java.automation.lab.fall.filimonov.core22.hierarchy.service.DriverService;
+package com.java.automation.lab.fall.filimonov.core22.hierarchy.service.driverservice;
 
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.driverdao.BusDriverDao;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.driverdao.impl.mock.BusDriverDaoImpl;
