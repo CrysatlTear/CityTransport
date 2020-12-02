@@ -14,10 +14,12 @@ import com.java.automation.lab.fall.filimonov.core22.hierarchy.enums.TransportTy
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.exceptions.*;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.factory.transport.*;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.util.io.FileManager;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.util.io.JsonIO;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.util.io.ObjectIO;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.util.threadManager.ThreadPool;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -26,7 +28,7 @@ import java.util.concurrent.BlockingDeque;
 
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException, EngineInvalidRpmException, FileNotFoundException, InvalidRouteException {
+    public static void main(String[] args) throws InterruptedException, EngineInvalidRpmException, IOException, InvalidRouteException {
 
         String[] busModelNames = new String[FileManager.getFileStringsCount(IOConstant.WHEEL_TRANSPORT_NAMES)];
         busModelNames = FileManager.readFile(busModelNames,IOConstant.WHEEL_TRANSPORT_NAMES);
@@ -277,6 +279,8 @@ public class Main {
         System.out.println(bus1.getPassengers());
 
         new ObjectIO<Bus>().write(bus1, IOConstant.RQ_PATH);
+
+        new JsonIO<Bus>(Bus.class).write(bus2,IOConstant.JSON_OBJ_PATH);
 
 
 

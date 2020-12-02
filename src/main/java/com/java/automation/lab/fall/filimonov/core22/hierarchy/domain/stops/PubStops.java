@@ -1,8 +1,9 @@
 package com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.stops;
 
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.base.AbstractModel;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.coordinate.Point;
 
-public abstract class PubStops {
+public abstract class PubStops extends AbstractModel {
    private Point coordinates;
    private String name;
    public static int number = 0;
