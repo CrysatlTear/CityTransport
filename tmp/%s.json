@@ -1,0 +1,28 @@
+{
+  "driver": {
+    "licence": "Bus_Driver_Licence",
+    "age": 50,
+    "name": "Valera",
+    "counter": 1,
+    "id": 0
+  },
+  "price": 10000,
+  "maxSpeed": 80,
+  "size": "Big",
+  "engine": {
+    "capacity": 6,
+    "rpm": 6000,
+    "tickpm": 1500,
+    "fuel": "Petrol",
+    "modelName": "Heavy IC Engine 900 H/W",
+    "id": 0
+  },
+  "coordinates": {
+    "x": 2,
+    "y": 2,
+    "counter": 1
+  },
+  "modelName": "MercedesBenz",
+  "passengers": [],
+  "id": 10
+}
