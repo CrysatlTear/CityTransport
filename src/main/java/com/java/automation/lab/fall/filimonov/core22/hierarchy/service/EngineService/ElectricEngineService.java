@@ -1,7 +1,7 @@
 package com.java.automation.lab.fall.filimonov.core22.hierarchy.service.EngineService;
 
-import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.EngineDao.ElecEngineDao;
-import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.EngineDao.impl.mock.ElecEngineDaoImpl;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.enginedao.ElecEngineDao;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.enginedao.impl.mock.ElecEngineDaoImpl;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.exceptions.BusDriverInvalidAgeException;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.exceptions.EngineInvalidRpmException;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.engines.ElectricEngine;

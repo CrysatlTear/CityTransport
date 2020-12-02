@@ -1,7 +1,7 @@
 package com.java.automation.lab.fall.filimonov.core22.hierarchy.service.TransportService;
 
-import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.TransportDao.TramDao;
-import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.TransportDao.impl.mock.TramDaoImpl;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.transportdao.TramDao;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.transportdao.impl.mock.TramDaoImpl;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.exceptions.BusDriverInvalidAgeException;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.exceptions.EngineInvalidRpmException;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.exceptions.TrainDriverInvalidAgeException;
