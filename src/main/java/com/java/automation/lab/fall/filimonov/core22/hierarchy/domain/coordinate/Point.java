@@ -1,10 +1,11 @@
 package com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.coordinate;
 
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.base.AbstractModel;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.enums.Axis;
 
 import java.io.Serializable;
 
-public class Point implements Serializable {
+public class Point extends AbstractModel implements Serializable {
     private int x;
     private int y;
     private int counter = 0;

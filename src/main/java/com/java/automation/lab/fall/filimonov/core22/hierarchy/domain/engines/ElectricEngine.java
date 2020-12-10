@@ -17,8 +17,8 @@ public class ElectricEngine extends Engine implements Serializable {
 
     public ElectricEngine(){}
 
-    public ElectricEngine(int rpm, int tickpm, Fuel fuel, String modelName, int tractionForce, int charge) throws EngineInvalidRpmException {
-        super(rpm, tickpm, fuel, modelName);
+    public ElectricEngine(int id, int rpm, int tickpm, Fuel fuel, String modelName, int tractionForce, int charge) throws EngineInvalidRpmException {
+        super(id, rpm, tickpm, fuel, modelName);
         this.tractionForce = tractionForce;
         this.charge = charge;
         if(rpm > 12000){

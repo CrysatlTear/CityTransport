@@ -1,9 +1,15 @@
 package com.java.automation.lab.fall.filimonov.core22.hierarchy.execution;
 
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.enginedao.impl.sql.EngineDaoImplSQL;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.enginedao.impl.sql.IcEngineDaoImplSQL;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.transportdao.impl.sql.BusDaoImplSQL;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.DAO.transportdao.impl.sql.CityTransportDaoImplSQL;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.config.SessionFactory;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.depot.*;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.constant.IOConstant;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.coordinate.Point;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.engines.ElectricEngine;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.engines.Engine;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.engines.IcEngine;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.stops.GroundStops;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.stops.UndergroundStops;
@@ -18,17 +24,13 @@ import com.java.automation.lab.fall.filimonov.core22.hierarchy.util.io.JsonIO;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.util.io.ObjectIO;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.util.threadManager.ThreadPool;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.BlockingDeque;
 
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException, EngineInvalidRpmException, IOException, InvalidRouteException {
+    public static void main(String[] args) throws InterruptedException, EngineInvalidRpmException, IOException, InvalidRouteException, TransportInvalidParamException, BusDriverInvalidAgeException {
 
         String[] busModelNames = new String[FileManager.getFileStringsCount(IOConstant.WHEEL_TRANSPORT_NAMES)];
         busModelNames = FileManager.readFile(busModelNames,IOConstant.WHEEL_TRANSPORT_NAMES);
@@ -44,7 +46,7 @@ public class Main {
 
         try {
             busA = BusFactory.createBigBus(1234, 10000, 80, FileManager.getSpecificName(busModelNames, 3)
-                    , new IcEngine(6000, 1500, Fuel.Petrol, FileManager.getSpecificNameStream(icEnginesNames, 3),
+                    , new IcEngine(2,6000, 1500, Fuel.Petrol, FileManager.getSpecificNameStream(icEnginesNames, 3),
                             6), new Point(2, 2), new LinkedList<>());
         }
         catch (BusDriverInvalidAgeException | EngineInvalidRpmException | TransportInvalidParamException ex){
@@ -76,7 +78,7 @@ public class Main {
 
         try {
             train = UndergroundFactory.createBigTrain(20123,50000, 100, FileManager.getRandomName(trainModelNames),
-                    new ElectricEngine(4000, 1000, Fuel.Electric, FileManager.getSpecificNameStream(elEnginesNames, 2),
+                    new ElectricEngine(10,4000, 1000, Fuel.Electric, FileManager.getSpecificNameStream(elEnginesNames, 2),
                             400, 50), 20, new Point(4, 4), new LinkedList<>());
         }
         catch (TrainDriverInvalidAgeException | EngineInvalidRpmException | TransportInvalidParamException ex){
@@ -109,7 +111,7 @@ public class Main {
 
         try {
             tram = TramFactory.createMediumTram(2314,30000, 80, FileManager.getRandomName(busModelNames),
-                    new ElectricEngine(12000, 3000, Fuel.Electric,
+                    new ElectricEngine(11, 12000, 3000, Fuel.Electric,
                             FileManager.getSpecificNameStream(elEnginesNames, 2), 300, 30),
                     new Point(6, 6), new LinkedList<>());
         }
@@ -143,7 +145,7 @@ public class Main {
 
         try {
             trolleyBus = TrolleyBusFactory.createBigTrolleyBus(40123,45000, 100,
-                    FileManager.getRandomName(busModelNames), new ElectricEngine(8000, 2000,
+                    FileManager.getRandomName(busModelNames), new ElectricEngine(12,8000, 2000,
                             Fuel.Electric, FileManager.getSpecificNameStream(elEnginesNames, 3),
                             200, 35), new Point(6, 6), new LinkedList<>());
         }
@@ -177,7 +179,7 @@ public class Main {
 
         try {
             monoRailTrain = MonorailFactory.createBigMonorail(12,100000, 100, FileManager.getSpecificName(trainModelNames, 1),
-                    new ElectricEngine(12000, 3500, Fuel.Electric, FileManager.getSpecificNameStream(elEnginesNames, 1),
+                    new ElectricEngine(14,12000, 3500, Fuel.Electric, FileManager.getSpecificNameStream(elEnginesNames, 1),
                             1000, 100), 10, new Point(-2, -2), new LinkedList<>());
         }
         catch (TrainDriverInvalidAgeException | EngineInvalidRpmException | TransportInvalidParamException ex){
@@ -233,7 +235,7 @@ public class Main {
 
         try {
             bus1 = BusFactory.createBigBus(1,10000, 80, FileManager.getSpecificName(busModelNames,3)
-                    , new IcEngine(6000, 1500, Fuel.Petrol, FileManager.getSpecificNameStream(icEnginesNames, 3),
+                    , new IcEngine(3,6000, 1500, Fuel.Petrol, FileManager.getSpecificNameStream(icEnginesNames, 3),
                             6), new Point(2, 2), new LinkedList<>());
         }
         catch (BusDriverInvalidAgeException | EngineInvalidRpmException | TransportInvalidParamException ex){
@@ -245,7 +247,7 @@ public class Main {
 
         try {
             bus2 = BusFactory.createBigBus(10,10000, 80, FileManager.getSpecificName(busModelNames,3)
-                    , new IcEngine(6000, 1500, Fuel.Petrol, FileManager.getSpecificNameStream(icEnginesNames, 3),
+                    , new IcEngine(4,6000, 1500, Fuel.Petrol, FileManager.getSpecificNameStream(icEnginesNames, 3),
                             6), new Point(2, 2), new LinkedList<>());
         }
         catch (BusDriverInvalidAgeException | EngineInvalidRpmException | TransportInvalidParamException ex){
@@ -269,7 +271,7 @@ public class Main {
         System.out.println(undergroundDepot);
 
         var bus_107 = GenericTransportFactory.createCityTransport(TransportTypess.BUS,1,30000,100,
-                TransportSize.Medium,FileManager.getSpecificName(busModelNames,2),new IcEngine(5000,
+                TransportSize.Medium,FileManager.getSpecificName(busModelNames,2),new IcEngine(4,5000,
                         2500,Fuel.Petrol,FileManager.getSpecificNameStream(elEnginesNames,3),40),
                 new Point(2,2),new LinkedList<>());
         bus_107.printInfo();
@@ -281,6 +283,39 @@ public class Main {
         new ObjectIO<Bus>().write(bus1, IOConstant.RQ_PATH);
 
         new JsonIO<Bus>(Bus.class).write(bus2,IOConstant.JSON_OBJ_PATH);
+
+        try{
+            SessionFactory.getSession();
+            System.out.println("Success");
+        }
+        catch (Exception exception){
+            System.out.println("Failed");
+        }
+
+        Bus buss = new Bus(1,50000,100,TransportSize.Big,"MercedecBenz",new IcEngine(1,4000,2000,Fuel.Petrol,
+                "HW1000",50),new Point(2,2),new LinkedList<>());
+
+
+        EngineDaoImplSQL engineDaoImplSQL = new EngineDaoImplSQL();
+        engineDaoImplSQL.create(buss.getEngine());
+
+        IcEngineDaoImplSQL icEngineDaoImplSQL = new IcEngineDaoImplSQL();
+        icEngineDaoImplSQL.create((IcEngine) buss.getEngine());
+
+
+
+
+        CityTransportDaoImplSQL cityTransportDaoImplSQL = new CityTransportDaoImplSQL();
+        cityTransportDaoImplSQL.create(buss);
+
+
+        BusDaoImplSQL busDaoImplSQL = new BusDaoImplSQL();
+        busDaoImplSQL.create(buss);
+
+
+       var a = busDaoImplSQL.getById(1L);
+        System.out.println(busDaoImplSQL.getById(1L));
+
 
 
 

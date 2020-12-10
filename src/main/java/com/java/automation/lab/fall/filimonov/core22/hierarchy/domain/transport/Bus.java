@@ -131,7 +131,7 @@ public class Bus extends CityTransport implements Comparable<Bus>, Serializable 
     @Override
     public String toString() {
         return "Bus {\n\tName: " + getModelName() + "\n\tType: " + getSize() + "\n\tSpeed: " +getMaxSpeed() +
-                "\n\tEngine: " + getEngine().getModelName() +"\n    }";
+                "\n\tEngine: " + getEngine() +"\n    }";
     }
 
     @Override

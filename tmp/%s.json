@@ -15,12 +15,13 @@
     "tickpm": 1500,
     "fuel": "Petrol",
     "modelName": "Heavy IC Engine 900 H/W",
-    "id": 0
+    "id": 4
   },
   "coordinates": {
     "x": 2,
     "y": 2,
-    "counter": 1
+    "counter": 1,
+    "id": 0
   },
   "modelName": "MercedesBenz",
   "passengers": [],

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="train_mapper">
+    <select id="getById" resultMap="Underground">
+        SELECT * FROM undergroundtrain join transport t
+                                    on t.TransportId = undergroundtrain.TransportId join engine e on e.EngineID = t.EngineID WHERE trainId = #{trainId};
+    </select>
+    <select id="get" resultMap="Underground">
+        SELECT
+            *
+        FROM undergroundtrain
+    </select>
+    <delete id="deleteById">
+        DELETE FROM undergroundtrain WHERE trainId=#{id}
+    </delete>
+    <insert id="create">
+        INSERT INTO undergroundtrain (TRANSPORTID) VALUES((select TransportId from transport where transport.TransportId = last_insert_id()));
+    </insert>
+    <update id="update">
+        UPDATE undergroundtrain SET TransportID = #{TransportID} WHERE trainId = #{id}
+    </update>
+    <resultMap id="bus" type="com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.transport.Underground" autoMapping="false">
+        <result property="id" column="id"/>
+        <result property="price" column="price"/>
+        <result property="maxSpeed" column="maxSpeed"/>
+        <result property="modelName" column="modelName"/>
+        <result property="size" column="Size"/>
+    </resultMap>
+
+</mapper>

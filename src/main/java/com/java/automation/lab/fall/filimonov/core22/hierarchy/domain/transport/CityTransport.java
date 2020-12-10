@@ -1,5 +1,7 @@
 package com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.transport;
 
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.engines.ElectricEngine;
+import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.engines.IcEngine;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.enums.TransportSize;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.base.AbstractModel;
 import com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.engines.Engine;
@@ -15,6 +17,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public abstract class CityTransport extends AbstractModel implements TransportActions, Serializable {
+    private IcEngine icEngine;
+    private ElectricEngine electricEngine;
     private int price;
     private int maxSpeed;
     private TransportSize size;
@@ -108,5 +112,6 @@ public abstract class CityTransport extends AbstractModel implements TransportAc
     public void setPassengers(List<Object> passengers) {
         this.passengers = passengers;
     }
+
 }
 

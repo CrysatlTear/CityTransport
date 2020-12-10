@@ -23,6 +23,7 @@ public class ElecEngineDaoImpl implements ElecEngineDao {
     @Override
     public ElectricEngine create(ElectricEngine electricEngine) throws EngineInvalidRpmException {
         return new ElectricEngine(
+                electricEngine.getId(),
                 electricEngine.getRpm(),
                 electricEngine.getTickpm(),
                 electricEngine.getFuel(),
@@ -45,6 +46,7 @@ public class ElecEngineDaoImpl implements ElecEngineDao {
     @Override
     public ElectricEngine update(ElectricEngine electricEngine) throws EngineInvalidRpmException {
         return new ElectricEngine(
+                electricEngine.getId(),
                 electricEngine.getRpm(),
                 electricEngine.getTickpm(),
                 electricEngine.getFuel(),

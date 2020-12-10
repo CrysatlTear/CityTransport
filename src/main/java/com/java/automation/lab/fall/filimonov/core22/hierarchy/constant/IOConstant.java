@@ -9,4 +9,6 @@ public class IOConstant {
     public static final String RQ_PATH = TMP_DIR_PATH + "/rq";
     public static final String XML_OBJ_PATH = TMP_DIR_PATH + "/%s.xml";
     public static final String JSON_OBJ_PATH = TMP_DIR_PATH + "/%s.json";
+    public static final String CONFIG_PATH = "D:/Projects/Java/CityTr/src/main/resources/mybatisconfig.xml";
+    public static final String MYBATIS_CONFIG_PATH = "D:\\Projects\\Java\\CityTr\\src\\main\\resources\\config.properties";
 }

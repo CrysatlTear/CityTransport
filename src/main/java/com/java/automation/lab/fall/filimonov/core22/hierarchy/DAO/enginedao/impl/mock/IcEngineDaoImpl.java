@@ -24,6 +24,7 @@ public class IcEngineDaoImpl implements IcEngineDao {
     @Override
     public IcEngine create(IcEngine electricEngine) throws EngineInvalidRpmException {
         return new IcEngine(
+                electricEngine.getId(),
                 electricEngine.getRpm(),
                 electricEngine.getTickpm(),
                 electricEngine.getFuel(),
@@ -45,6 +46,7 @@ public class IcEngineDaoImpl implements IcEngineDao {
     @Override
     public IcEngine update(IcEngine electricEngine) throws EngineInvalidRpmException {
         return new IcEngine(
+                electricEngine.getId(),
                 electricEngine.getRpm(),
                 electricEngine.getTickpm(),
                 electricEngine.getFuel(),
