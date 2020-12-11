@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bus_mapper">
+    <select id="getById" resultMap="BusDriver">
+        SELECT * FROM bus join transport t
+            on t.TransportId = bus.TransportId join engine e on e.EngineID = t.EngineID WHERE busId = #{busID};
+    </select>
+    <select id="get" resultMap="BusDriver">
+        SELECT
+            *
+        FROM bus
+    </select>
+    <delete id="deleteById">
+        DELETE FROM busdriver WHERE BusDriverId=#{id}
+    </delete>
+    <insert id="create">
+        INSERT INTO busdriver (DriverID) VALUES((select DriverID from drivers where driver.DriverID = last_insert_id()));
+    </insert>
+    <update id="update">
+        UPDATE bus SET DriverID = #{DriverID} WHERE Driver = #{id}
+    </update>
+    <resultMap id="BusDriver" type="com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.drivers.BusDriver" autoMapping="false">
+        <result property="id" column="id"/>
+        <result property="age" column="age"/>
+        <result property="name" column="name"/>
+        <result property="licence" column="licence"/>
+    </resultMap>
+
+</mapper>
