@@ -13,7 +13,8 @@ public abstract class Engine extends AbstractModel implements Serializable {
 
     public Engine(){}
 
-    public Engine(int rpm, int tickpm, Fuel fuel, String modelName) {
+    public Engine(int id, int rpm, int tickpm, Fuel fuel, String modelName) {
+        this.setId(id);
         this.rpm = rpm;
         this.tickpm = tickpm;
         this.fuel = fuel;
@@ -70,4 +71,5 @@ public abstract class Engine extends AbstractModel implements Serializable {
     public void setModelName(String modelName) {
         this.modelName = modelName;
     }
+
 }

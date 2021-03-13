@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="engine_mapper">
+    <select id="getById" resultMap="engine">
+        SELECT * FROM engine WHERE EngineID = #{id}
+    </select>
+    <select id="getByName" resultMap="engine">
+        SELECT * FROM engine WHERE modelName = #{modelName};
+    </select>
+    <select id="get" resultMap="engine">
+        SELECT
+        *
+        FROM engine
+    </select>
+    <delete id="deleteById">
+        DELETE FROM engine WHERE EngineID=#{id}
+    </delete>
+    <insert id="create">
+        INSERT INTO engine(rpm, tickpm, fuel, modelName) VALUES(#{rpm},#{tickpm},#{fuel},#{modelName});
+    </insert>
+    <update id="update">
+        UPDATE engine SET rpm = #{rpm}, tickpm = #{tickpm}, fuel = #{fuel}, modelName = #{modelName} WHERE EngineID = #{id}
+    </update>
+    <resultMap id="engine" type="com.java.automation.lab.fall.filimonov.core22.hierarchy.domain.engines.Engine" autoMapping="false">
+        <result property="id" column="EngineID"/>
+        <result property="rpm" column="rpm"/>
+        <result property="tickpm" column="tickpm"/>
+        <result property="fuel" column="fuel"/>
+        <result property="modelName" column="modelName"/>
+</resultMap>
+
+</mapper>

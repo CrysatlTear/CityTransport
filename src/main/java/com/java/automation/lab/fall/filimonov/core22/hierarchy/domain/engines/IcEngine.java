@@ -15,8 +15,8 @@ public class IcEngine extends Engine implements Serializable {
 
     public IcEngine(){}
 
-    public IcEngine(int rpm, int tickpm, Fuel fuel, String modelName, int capacity) throws EngineInvalidRpmException {
-        super(rpm, tickpm, fuel, modelName);
+    public IcEngine(int id, int rpm, int tickpm, Fuel fuel, String modelName, int capacity) throws EngineInvalidRpmException {
+        super(id, rpm, tickpm, fuel, modelName);
         this.capacity = capacity;
         if(rpm > 10000){
             throw new EngineInvalidRpmException("Engine is not safe, RPM is to high : ", this.getRpm());
